@@ -9,7 +9,7 @@ float measleX, measleY, measleDiameter;
 color resetColour=#FFFFFF;
 //
 void setup() {
-  size( 600, 400); //fullScreen;
+  size( 600, 400 ); //fullScreen;
   appWidth = width; //displayWidth
   appHeight = height; //displayHeight
   //Ternary Operator
@@ -24,10 +24,10 @@ void setup() {
   backgroundY = faceY - faceDiameter*1/2;
   backgroundWidth = faceDiameter;
   backgroundHeight = faceDiameter;
-  leftEyeX = backgroundX+smallerDimension*1/4;
-  leftEyeY = backgroundY+smallerDimension*1/4;
+  leftEyeX = backgroundX+smallerDimension*2/8;
+  leftEyeY = backgroundY+smallerDimension*2/8;
   eyeDimater = smallerDimension*1/11;
-  rightEyeX = backgroundX+smallerDimension*3/4;
+  rightEyeX = backgroundX+smallerDimension*6/8;
   rightEyeY = leftEyeY;
   noseX1 = faceX;
   noseY1 = rightEyeY;
@@ -43,6 +43,7 @@ void setup() {
   mouthReset = smallerDimension/smallerDimension; //1=reset
   //
   //DIVs
+  rect( backgroundX, backgroundY, backgroundWidth, backgroundHeight ); //Circle ONLY
   ellipse( faceX, faceY, faceDiameter, faceDiameter );
   //4 Inscribed buttons on the background square not on the circle
   //Solve Isolceles leg length to find rect() width and height
@@ -53,8 +54,7 @@ void setup() {
 } //End setup
 //
 void draw() {
-  rect( backgroundX, backgroundY, backgroundWidth, backgroundHeight ); //Circle ONLY
-  ellipse( faceX, faceY, faceDiameter, faceDiameter );
+  
   ellipse ( leftEyeX, leftEyeY, eyeDimater, eyeDimater ); //Left Eye
   ellipse ( rightEyeX, rightEyeY, eyeDimater, eyeDimater ); //Right Eye
   triangle( noseX1, noseY1, noseX2, noseY2, noseX3, noseY3 ); //Nose
@@ -64,10 +64,12 @@ void draw() {
   //
   color measleColour = color( 255, random(0,84), random(0, 103) );
   fill(measleColour);
-  measleX = random( 0, appWidth );
-  measleY = random( 0, appHeight );
+  measleX = random( backgroundX, backgroundX+backgroundWidth );
+  measleY = random( backgroundY, backgroundY+backgroundHeight );
   measleDiameter = random( smallerDimension*1/100, smallerDimension*1/30 );
+  noStroke();
   ellipse( measleX, measleY, measleDiameter, measleDiameter );
+  stroke(1); //default is 1
   fill(resetColour);
 } //End draw
 //
