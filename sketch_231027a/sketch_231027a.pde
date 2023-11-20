@@ -43,9 +43,9 @@ PFont buttonFont;
 Boolean measlesON=false;
 //
 void setup() {
-  size( 600, 400 ); //fullScreen;
-  appWidth = width; //displayWidth
-  appHeight = height; //displayHeight
+ fullScreen();
+  appWidth = displayWidth; //displayWidth
+  appHeight = displayHeight; //displayHeight
   //Ternary Operator
   smallerDimension = (appWidth >= appHeight) ? appHeight : appWidth;
   println("Smaller Dimension is", smallerDimension); //Started as local variable
