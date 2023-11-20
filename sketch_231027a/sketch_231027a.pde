@@ -35,8 +35,8 @@ float leftEyeX, leftEyeY, rightEyeX, rightEyeY, eyeDimater;
 float noseX1, noseY1, noseX2, noseY2, noseX3, noseY3;
 float mouthX1, mouthY1, mouthX2, mouthY2, mouthOpen, mouthReset;
 float measleX, measleY, measleDiameter;
-float button1X, button1Y, button2X, button2Y, button3X, button3Y, buttonSide;
-color purple=#2C08FF, yellow = #E9FF00, blackInk=#000000, resetColour=#FFFFFF;
+float button1X, button1Y, button2X, button2Y, button3X, button3Y,button4X, button4Y, buttonSide;
+color purple=#2C08FF, green = #00FF3D, red = #FF3300, blackInk=#000000, resetColour=#FFFFFF;
 color hoverOverColour=resetColour;
 String start="Start", stop="STOP", quit="X";
 PFont buttonFont;
@@ -102,12 +102,12 @@ void draw() {
   //ERROR Coded, hoverover allows measles into other buttons
   //Only START has is fixed
   if ( mouseX>button1X && mouseX<button1X+buttonSide && mouseY>button1Y && mouseY<button1Y+buttonSide ) { //Buton 1
-    hoverOverColour = yellow;
+    hoverOverColour = green;
     fill( hoverOverColour );
     rect( button1X, button1Y, buttonSide, buttonSide );
     fill( resetColour );
   } else if ( mouseX>button2X && mouseX<button2X+buttonSide && mouseY>button2Y && mouseY<button2Y+buttonSide ) { //Button 2
-    hoverOverColour = yellow;
+    hoverOverColour = red;
     fill( hoverOverColour );
     rect( button2X, button2Y, buttonSide, buttonSide );
   } else if ( mouseX>button3X && mouseX<button3X+buttonSide && mouseY>button3Y && mouseY<button3Y+buttonSide ) { //button 3
@@ -120,7 +120,7 @@ void draw() {
     rect( button1X, button1Y, buttonSide, buttonSide );
     rect( button2X, button2Y, buttonSide, buttonSide );
     rect( button3X, button3Y, buttonSide, buttonSide );
-  }
+}
   //
   fill(blackInk);
   textAlign(CENTER, CENTER); //Align X&Y, see Processing.org / Reference
@@ -138,7 +138,7 @@ void draw() {
   line( mouthX1, mouthY1, mouthX2, mouthY2 ); //mouth
   strokeWeight(mouthReset); //1=reset
   //
-  color measleColour = color( 255, random(0, 84), random(0, 103) );
+  color measleColour = color( 300, random(0, 84), random(0, 103) );
   fill(measleColour);
   measleDiameter = random( smallerDimension*1/100, smallerDimension*1/30 );
   measleX = random( backgroundX+(measleDiameter/2), (backgroundX+backgroundWidth)-(measleDiameter/2) );
